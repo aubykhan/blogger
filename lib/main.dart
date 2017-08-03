@@ -79,13 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: _isLoading
           ? new Center(child: const CircularProgressIndicator())
-          : new ListView(
-              children: ListTile
-                  .divideTiles(
-                    context: context,
-                    tiles: _listTiles,
-                  )
-                  .toList(),
+//          ListView with separators
+//          : new ListView(
+//              children: ListTile
+//                  .divideTiles(
+//                    context: context,
+//                    tiles: _listTiles,
+//                  )
+//                  .toList(),
+//            ),
+          : new ListView.builder(
+              itemCount: _listTiles.length,
+              itemBuilder: (_, int index) => _listTiles[index],
             ),
       floatingActionButton: new FloatingActionButton(
         onPressed: _refreshData,
